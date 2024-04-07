@@ -13,7 +13,7 @@ def q_search(query):
     if query.isdigit() and len(query) <= 5:
         return Products.objects.filter(id=int(query))
 
-    """ vector = SearchVector("name", "description")
+    vector = SearchVector("name", "description")
     query = SearchQuery(query)
 
     result = (
@@ -38,8 +38,8 @@ def q_search(query):
             stop_sel="</span>",
         )
     )
-    return result """
-    keywords = [word for word in query.split() if len(word) > 2]
+    return result
+    """ keywords = [word for word in query.split() if len(word) > 2]
 
     q_objects = Q()
 
@@ -47,4 +47,4 @@ def q_search(query):
         q_objects |= Q(description__icontains=token)
         q_objects |= Q(name__icontains=token)
 
-    return Products.objects.filter(q_objects)
+    return Products.objects.filter(q_objects) """
